@@ -123,7 +123,7 @@
             display: grid;
             grid-template-columns: 100px 1fr;
             gap: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             padding: 0.75rem;
             background: var(--bg);
             border-radius: 6px;
@@ -153,27 +153,18 @@
         .bar-fill.warn { background: var(--warning); }
         .bar-fill.bad { background: var(--danger); }
         .bar-value { font-size: 0.7rem; color: var(--text-light); text-align: right; }
-        /* App Effectiveness */
-        .app-effectiveness { margin-top: 1.5rem; }
-        .app-effectiveness h4 { font-size: 0.85rem; margin-bottom: 0.75rem; color: var(--text-light); }
-        .effectiveness-card {
-            padding: 1rem;
+        /* App Verdict - MUST be sibling of app-row, not child */
+        .app-verdict {
+            padding: 0.5rem 0.75rem;
             margin-bottom: 1rem;
-            background: var(--bg);
-            border-radius: 6px;
-            border-left: 4px solid var(--border);
+            font-size: 0.8rem;
+            color: var(--text-light);
+            border-left: 3px solid var(--border);
+            margin-left: 1rem;
         }
-        .effectiveness-card.effective { border-left-color: var(--success); }
-        .effectiveness-card.mixed { border-left-color: var(--warning); }
-        .effectiveness-card.ineffective { border-left-color: var(--danger); }
-        .effectiveness-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-        .effectiveness-title { font-weight: 600; font-size: 0.9rem; }
-        .effectiveness-detail { font-size: 0.8rem; color: var(--text-light); }
+        .app-verdict.effective { border-left-color: var(--success); }
+        .app-verdict.mixed { border-left-color: var(--warning); }
+        .app-verdict.ineffective { border-left-color: var(--danger); }
     </style>
 </head>
 <body>
@@ -210,11 +201,9 @@
             <div class="root-cause">
                 <strong>Root Causes Identified:</strong>
                 <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
-                    <li><strong>Summer Slide (-9 RIT):</strong> Winter 2024-25 RIT 198 → Fall 2025-26 RIT 189. No reading practice over summer.</li>
-                    <li><strong>TeachTales for 43 School Days:</strong> Remained in TeachTales (Aug 19 - Oct 30) with erratic accuracy (17-100%) and XP/Min of 3.0. Sep 10 ORF showed 20% comprehension at Level P while still in this app.</li>
-                    <li><strong>Informational Instruction Gap:</strong> Only 21% of MobyMax time on Informational despite it being the lowest domain (197 RIT). Informational paused Nov 8 - Jan 15 (10 weeks), resumed just 8 school days before MAP.</li>
-                    <li><strong>Premature Grade 3 Placement:</strong> Placed in G3 content Aug 14 with accuracy declining 87% → 62% in 3 days. Fall MAP indicated Effective Grade = 2. Literably G2 benchmark not passed until Dec 9 - 4 months later.</li>
-                    <li><strong>Skill Doom Loop:</strong> "Identify supporting details" attempted 4+ times without mastery (25%, 40%, 60%, 40%). Student advanced to G4 content despite failing G3 skills.</li>
+                    <li><strong>Summer Slide (-9 RIT):</strong> Winter 2024-25 RIT 198 → Fall 2025-26 RIT 189. No reading practice over summer (Jun-Aug 2025).</li>
+                    <li><strong>TeachTales for 43 School Days:</strong> Aug 19 - Oct 30, 2025 with erratic accuracy (17-100%) and XP/Min of 3.0. Sep 10 ORF: 20% comprehension at Level P.</li>
+                    <li><strong>Informational Instruction Gap:</strong> Only 21% of MobyMax time on Informational despite it being the lowest domain (197 RIT). 10-week pause (Nov 8 - Jan 15), resumed 8 school days before MAP.</li>
                 </ul>
             </div>
         </div>
@@ -229,8 +218,8 @@
                     <div class="fix-detail">Only 21% of MobyMax time has been on Informational content despite it being the lowest domain (197 RIT). Maintain current MobyMax Informational 3 rostering; target 50/50 split between Literature and Informational going forward.</div>
                 </li>
                 <li>
-                    <div class="fix-title">2. Target Supporting Details Skill (Skill Doom Loop)</div>
-                    <div class="fix-detail">Student has attempted "Identify supporting details" 4+ times without mastery (25%, 40%, 60%, 40%). Do NOT advance to Grade 4 content until Grade 3 skills reach 80%. Consider 1:1 intervention on main idea/supporting details before continuing adaptive curriculum.</div>
+                    <div class="fix-title">2. Monitor Informational Accuracy</div>
+                    <div class="fix-detail">Informational accuracy averaging 57% vs Literature at 80%. If accuracy remains below 70% after 2 weeks, consider 1:1 intervention on supporting details and text features skills.</div>
                 </li>
                 <li>
                     <div class="fix-title">3. Continue MobyMax Literature 3</div>
@@ -310,180 +299,99 @@
                 </div>
             </div>
 
-            <!-- MAP-Indicated Placement -->
+            <!-- ORF Placement Check - NO DATE COLUMN per template -->
             <div class="data-table" style="margin-top: 1.5rem;">
-                <h4>MAP-Indicated Placement vs Actual (Fall 2025)</h4>
+                <h4>ORF Benchmark Check (Literably)</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Text Level</th>
+                            <th>WCPM</th>
+                            <th>Accuracy</th>
+                            <th>Benchmark</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Daisy the Photographer (N)</td>
+                            <td>85</td>
+                            <td>93.4%</td>
+                            <td><span class="badge badge-success">PASS</span></td>
+                        </tr>
+                        <tr>
+                            <td>Hummingbird (N)</td>
+                            <td>78</td>
+                            <td>98.7%</td>
+                            <td><span class="badge badge-success">PASS</span></td>
+                        </tr>
+                        <tr>
+                            <td>Saving Elephants (P)</td>
+                            <td>87</td>
+                            <td>92.6%</td>
+                            <td><span class="badge badge-warning">PASS (1/5 comp)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Duck for a Day (M)</td>
+                            <td>113</td>
+                            <td>91.9%</td>
+                            <td><span class="badge badge-success">PASS</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Effective Grade Source - from Student_Progress CSV -->
+            <div class="data-table" style="margin-top: 1.5rem;">
+                <h4>Placement Data (from Student_Progress CSV)</h4>
                 <table>
                     <thead>
                         <tr>
                             <th>Indicator</th>
-                            <th>MAP Recommendation</th>
-                            <th>Actual Placement</th>
+                            <th>Value</th>
+                            <th>Start of Year Placement</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>R90 (90% accuracy level)</td>
-                            <td>Grade 1</td>
-                            <td>Grade 3</td>
-                            <td><span class="badge badge-danger">2 GRADES HIGH</span></td>
-                        </tr>
-                        <tr>
-                            <td>Effective Grade (learning level)</td>
-                            <td>Grade 2</td>
+                            <td>Effective Grade</td>
+                            <td>2</td>
                             <td>Grade 3</td>
                             <td><span class="badge badge-danger">1 GRADE HIGH</span></td>
                         </tr>
                         <tr>
-                            <td>Fall RIT Score</td>
-                            <td>189</td>
-                            <td colspan="2">Below prior Winter (198) due to summer slide</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 0.5rem;"><strong>Analysis:</strong> Fall MAP indicated student should work at Effective Grade 2, but was placed in Grade 3 content (Alpha Read G3, MobyMax Lit/Info 3). This mismatch contributed to the 62.5% accuracy in Alpha Read and subsequent move to TeachTales.</p>
-            </div>
-
-            <!-- App Usage Timeline -->
-            <div class="data-table" style="margin-top: 1.5rem;">
-                <h4>App Usage Timeline (From Daily Metrics)</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>App</th>
-                            <th>Period</th>
-                            <th>Days</th>
-                            <th>XP</th>
-                            <th>Notes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Alpha Read G3</td>
-                            <td>Aug 14-18</td>
-                            <td>3</td>
-                            <td>25</td>
-                            <td><span class="badge badge-danger">Acc: 87%→62%</span></td>
-                        </tr>
-                        <tr>
-                            <td>TeachTales</td>
-                            <td>Aug 19 - Oct 30</td>
-                            <td>43</td>
-                            <td>934</td>
-                            <td><span class="badge badge-warning">PHASED OUT</span></td>
-                        </tr>
-                        <tr>
-                            <td>MobyMax Lit 3</td>
-                            <td>Oct 16 - Jan 15</td>
-                            <td>59</td>
-                            <td>749</td>
-                            <td><span class="badge badge-success">Active</span></td>
-                        </tr>
-                        <tr>
-                            <td>MobyMax Info 3</td>
-                            <td>Oct 20 - Jan 27</td>
-                            <td>21</td>
-                            <td>150</td>
-                            <td><span class="badge badge-danger">21% of time</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- ORF Placement Check -->
-            <div class="data-table" style="margin-top: 1.5rem;">
-                <h4>ORF Benchmark Check (Literably - Grade Levels D, J, M)</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Benchmark</th>
-                            <th>Target</th>
-                            <th>Student</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Level M (G2)</td>
-                            <td>104 WCPM @ 95%</td>
-                            <td>113 WCPM @ 91.9%</td>
-                            <td>Dec 9, 2025</td>
-                            <td><span class="badge badge-warning">PASS (acc below 95%)</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 0.5rem;"><strong>Key Issue:</strong> Student was placed in G3 content (Aug 14) but did not pass G2 benchmark (Level M) until Dec 9, 2025 - 4 months later.</p>
-            </div>
-
-            <!-- Curriculum Alignment Analysis -->
-            <div class="data-table" style="margin-top: 1.5rem;">
-                <h4>Curriculum Alignment: MAP vs MobyMax Skills (Informational)</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Skill (MAP Focus Area)</th>
-                            <th>Attempts</th>
-                            <th>Scores</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Identify supporting details (G3)</td>
-                            <td>2</td>
-                            <td>25%, 40%</td>
-                            <td><span class="badge badge-danger">DOOM LOOP</span></td>
-                        </tr>
-                        <tr>
-                            <td>Identify supporting details (G4)</td>
-                            <td>2</td>
-                            <td>60%, 40%</td>
-                            <td><span class="badge badge-danger">PREMATURE</span></td>
-                        </tr>
-                        <tr>
-                            <td>Locate and use sidebars</td>
-                            <td>2</td>
-                            <td>60%, 20%</td>
-                            <td><span class="badge badge-danger">FAILING</span></td>
-                        </tr>
-                        <tr>
-                            <td>Identify types of illustrations</td>
-                            <td>2</td>
-                            <td>40%, 40%</td>
-                            <td><span class="badge badge-danger">FAILING</span></td>
-                        </tr>
-                        <tr>
-                            <td>Identify evidence that supports claim</td>
-                            <td>2</td>
-                            <td>40%, 20%</td>
-                            <td><span class="badge badge-danger">FAILING</span></td>
-                        </tr>
-                        <tr>
-                            <td>Determine main idea</td>
+                            <td>R90</td>
                             <td>1</td>
-                            <td>100%</td>
-                            <td><span class="badge badge-success">MASTERED</span></td>
-                        </tr>
-                        <tr>
-                            <td>Compare and contrast main ideas</td>
-                            <td>1</td>
-                            <td>80%</td>
-                            <td><span class="badge badge-success">MASTERED</span></td>
+                            <td>Grade 3</td>
+                            <td><span class="badge badge-danger">2 GRADES HIGH</span></td>
                         </tr>
                     </tbody>
                 </table>
-                <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 0.5rem;"><strong>Verdict: PARTIAL MISMATCH</strong> - MobyMax covered correct topic areas but student repeatedly failed core skills without intervention. Premature advancement to G4 content.</p>
+                <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 0.5rem;"><strong>Source:</strong> Student_Progress_Tra_1770119093503.csv | Effective Grade and R90 indicate student should have started at Grade 2 content.</p>
             </div>
 
-            <!-- App Performance (Current Active Apps) -->
+            <!-- App Performance Visualization - Order: XP/Day, Active Time/Day, Accuracy, XP/Min -->
             <div class="app-performance">
-                <h4>Current App Performance (MobyMax - Active)</h4>
+                <h4>App Performance</h4>
 
+                <!-- MobyMax Literature 3 -->
                 <div class="app-row">
-                    <div class="app-name">Literature 3</div>
+                    <div class="app-name">MobyMax Lit 3</div>
                     <div class="app-bars">
+                        <div class="bar-row">
+                            <span class="bar-label">XP/Day</span>
+                            <div class="bar-track">
+                                <div class="bar-fill good" style="width: 80%"></div>
+                            </div>
+                            <span class="bar-value">20</span>
+                        </div>
+                        <div class="bar-row">
+                            <span class="bar-label">Active Time/Day</span>
+                            <div class="bar-track">
+                                <div class="bar-fill good" style="width: 75%"></div>
+                            </div>
+                            <span class="bar-value">15 min</span>
+                        </div>
                         <div class="bar-row">
                             <span class="bar-label">Accuracy</span>
                             <div class="bar-track">
@@ -492,18 +400,36 @@
                             <span class="bar-value">80%</span>
                         </div>
                         <div class="bar-row">
-                            <span class="bar-label">Time %</span>
+                            <span class="bar-label">XP/Min</span>
                             <div class="bar-track">
-                                <div class="bar-fill warn" style="width: 79%"></div>
+                                <div class="bar-fill good" style="width: 100%"></div>
                             </div>
-                            <span class="bar-value">79%</span>
+                            <span class="bar-value">1.0</span>
                         </div>
                     </div>
                 </div>
+                <div class="app-verdict effective">
+                    <strong>EFFECTIVE</strong> - 80% accuracy, XP/Min 1.0. Student achieved 2.5x projected growth during MobyMax period (Fall→Winter).
+                </div>
 
+                <!-- MobyMax Informational 3 -->
                 <div class="app-row">
-                    <div class="app-name">Informational 3</div>
+                    <div class="app-name">MobyMax Info 3</div>
                     <div class="app-bars">
+                        <div class="bar-row">
+                            <span class="bar-label">XP/Day</span>
+                            <div class="bar-track">
+                                <div class="bar-fill warn" style="width: 50%"></div>
+                            </div>
+                            <span class="bar-value">10</span>
+                        </div>
+                        <div class="bar-row">
+                            <span class="bar-label">Active Time/Day</span>
+                            <div class="bar-track">
+                                <div class="bar-fill warn" style="width: 40%"></div>
+                            </div>
+                            <span class="bar-value">8 min</span>
+                        </div>
                         <div class="bar-row">
                             <span class="bar-label">Accuracy</span>
                             <div class="bar-track">
@@ -512,42 +438,54 @@
                             <span class="bar-value">57%</span>
                         </div>
                         <div class="bar-row">
-                            <span class="bar-label">Time %</span>
+                            <span class="bar-label">XP/Min</span>
                             <div class="bar-track">
-                                <div class="bar-fill bad" style="width: 21%"></div>
+                                <div class="bar-fill good" style="width: 100%"></div>
                             </div>
-                            <span class="bar-value">21%</span>
+                            <span class="bar-value">1.0</span>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- App Effectiveness Analysis -->
-            <div class="app-effectiveness">
-                <h4>App Effectiveness Analysis (Using ORF Scores)</h4>
-
-                <div class="effectiveness-card ineffective">
-                    <div class="effectiveness-header">
-                        <span class="effectiveness-title">TeachTales (Phased Out Oct 30)</span>
-                        <span class="badge badge-danger">INEFFECTIVE</span>
-                    </div>
-                    <div class="effectiveness-detail">
-                        <strong>Usage:</strong> Aug 19 - Oct 30, 2025 (43 days, 934 XP, 308 min)<br>
-                        <strong>Evidence:</strong> XP/Min ratio of 3.0 (should be ~1.0). Accuracy ranged 17-100% (erratic). Many days had XP but no accuracy data = passive content. Sep 10 ORF during TeachTales period: 20% comprehension at Level P.<br>
-                        <strong>Verdict:</strong> Did not address comprehension gaps. Student showed fluency gains (+28 WCPM) but comprehension remained weak on grade-level text.
-                    </div>
+                <div class="app-verdict mixed">
+                    <strong>MIXED</strong> - Only 21% of MobyMax time. 10-week gap (Nov 8 - Jan 15). Accuracy 57% needs monitoring.
                 </div>
 
-                <div class="effectiveness-card effective">
-                    <div class="effectiveness-header">
-                        <span class="effectiveness-title">MobyMax</span>
-                        <span class="badge badge-success">EFFECTIVE</span>
+                <!-- TeachTales (Phased Out) -->
+                <div class="app-row">
+                    <div class="app-name">TeachTales</div>
+                    <div class="app-bars">
+                        <div class="bar-row">
+                            <span class="bar-label">XP/Day</span>
+                            <div class="bar-track">
+                                <div class="bar-fill warn" style="width: 86%"></div>
+                            </div>
+                            <span class="bar-value">22</span>
+                        </div>
+                        <div class="bar-row">
+                            <span class="bar-label">Active Time/Day</span>
+                            <div class="bar-track">
+                                <div class="bar-fill bad" style="width: 35%"></div>
+                            </div>
+                            <span class="bar-value">7 min</span>
+                        </div>
+                        <div class="bar-row">
+                            <span class="bar-label">Accuracy</span>
+                            <div class="bar-track">
+                                <div class="bar-fill warn" style="width: 60%"></div>
+                            </div>
+                            <span class="bar-value">60%</span>
+                        </div>
+                        <div class="bar-row">
+                            <span class="bar-label">XP/Min</span>
+                            <div class="bar-track">
+                                <div class="bar-fill bad" style="width: 33%"></div>
+                            </div>
+                            <span class="bar-value">3.0</span>
+                        </div>
                     </div>
-                    <div class="effectiveness-detail">
-                        <strong>Usage:</strong> Oct 2025 - Jan 2026 (899 XP, 949 min)<br>
-                        <strong>MAP Growth:</strong> +15 RIT (Fall to Winter) = 2.5x projected<br>
-                        <strong>Verdict:</strong> Student achieved 2.5x projected growth during MobyMax period. RIT recovered from 189 to 204. XP/Min ratio near 1:1 = appropriate placement. Continue with Literature 3; increase Informational 3.
-                    </div>
+                </div>
+                <div class="app-verdict ineffective">
+                    <strong>INEFFECTIVE</strong> - Aug 19 - Oct 30 (43 days). XP/Min 3.0 = passive content. Sep 10 ORF: 20% comprehension. Phased out correctly.
                 </div>
             </div>
         </div>
